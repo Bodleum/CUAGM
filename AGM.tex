@@ -1,0 +1,151 @@
+\documentclass{beamer}
+\usetheme{metropolis}
+\usepackage{bookmark}
+\usepackage{pgfplots}
+\usepackage{tabularx}
+\usepackage{changepage}
+
+\def\curbal{8,659.79}
+\def\uncashed{5,818.14}
+\def\netbal{2,814.65}
+\def\income{11,426.39}
+\def\estexp{21,394.54}
+
+\title{SAUCU Treasurer's Report}
+\author{Daniel Laing}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{Summary}
+
+\setbeamercovered{invisible}
+\begin{frame}[allowframebreaks]
+    \frametitle{Balances}
+    \begin{table}[h]
+        \centering
+        \label{tab:balances}
+        \begin{tabularx}{\pagewidth}{>{\bfseries}ll>{\itshape}c}
+            Opening Balance: & {\pounds}10,832.04 & 04/05/2021 \\
+            & {\pounds}12,809.90 & 01/09/2021 \\
+            Current Balance: & {\pounds\curbal} & 10/02/2022 \\
+            Uncashed Cheques: & {\pounds\uncashed} & '' \\
+            Net Balance: & {\pounds\netbal} & '' \\
+            \hline\hline
+            Income: & {\pounds\income} & 01/09/2021 -- 10/02/2022\\
+            Estimated Expenditure: & {\pounds\estexp} & '' \\
+        \end{tabularx}
+    \end{table}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Income vs. Spending}
+    \begin{center}
+        \begin{tikzpicture}
+            \begin{axis}[
+                height=0.9\textheight,
+                ybar,
+                ymin=0,
+                bar width=50pt,
+                symbolic x coords={Income, Spending},
+                %ytick=data,
+                xtick=data,
+                axis x line=bottom,
+                axis y line=left,
+                enlarge x limits=0.5,
+                xticklabel style={anchor=base,yshift=-\baselineskip},
+                nodes near coords={\pounds\pgfmathprintnumber\pgfplotspointmeta}]
+                \addplot[fill=mLightBrown] coordinates {
+                    (Income,    11426.39)
+                    (Spending,  21394.54)
+                };
+            \end{axis}
+        \end{tikzpicture}
+    \end{center}
+\end{frame}
+
+\section{Spending}
+\begin{frame}
+    \frametitle{Expenditure}
+    \begin{adjustwidth}{-2em}{-1.5em}
+        \begin{tikzpicture}
+            \begin{axis}[
+                height=\textheight,
+                width=0.8\textwidth,
+                bar width=10pt,
+                xbar,
+                symbolic y coords={Forum, Carol Service, 2020, Freshers' Week, I-Cafe, MW22, Publicity, WA21, WA22, Explore, Misc},
+                xtick=\empty,
+                tickwidth         = 0pt,
+                ytick             = data,
+                axis x line=none,
+                y axis line style = { opacity = 0 },
+                enlarge y limits  = 0.2,
+                enlarge x limits  = 0.02,
+                %yticklabel style={anchor=base,xshift=-\baselineskip},
+                nodes near coords={\pounds\pgfmathprintnumber\pgfplotspointmeta}]
+                \addplot[fill=mLightBrown] coordinates {
+                    (70,Forum)
+                    (245.44,Carol Service)
+                    (98.19,2020)
+                    (254.98,Freshers' Week)
+                    (382.96,I-Cafe)
+                    (16735.33,MW22)
+                    (308.46,Publicity)
+                    (2647.99,WA21)
+                    (239.60,WA22)
+                    (20,Explore)
+                    (391.59,Misc)
+                };
+            \end{axis}
+        \end{tikzpicture}
+        \begin{center}
+            {\large\bfseries Total: {\pounds\estexp}}
+        \end{center}
+    \end{adjustwidth}
+\end{frame}
+
+\section{Income}
+\begin{frame}
+    \frametitle{Expenditure}
+    \begin{adjustwidth}{-2em}{-1.5em}
+        \begin{tikzpicture}
+            \begin{axis}[
+                height=\textheight,
+                width=0.8\textwidth,
+                bar width=10pt,
+                xbar,
+                symbolic y coords={Cash, Donations, WA21, UCCF},
+                xtick=\empty,
+                tickwidth         = 0pt,
+                ytick             = data,
+                axis x line=none,
+                y axis line style = { opacity = 0 },
+                enlarge y limits  = 0.2,
+                enlarge x limits  = 0.02,
+                %yticklabel style={anchor=base,xshift=-\baselineskip},
+                nodes near coords={\pounds\pgfmathprintnumber\pgfplotspointmeta}]
+                \addplot[fill=mLightBrown] coordinates {
+                        (795.71,Cash)
+                        (7648.18,Donations)
+                        (2855,WA21)
+                        (127.5,UCCF)
+                };
+            \end{axis}
+        \end{tikzpicture}
+        \begin{center}
+            {\large\bfseries Total: {\pounds\income}}
+        \end{center}
+    \end{adjustwidth}
+\end{frame}
+
+\section{Next Year}
+\begin{frame}
+    \frametitle{Next Year}
+    \begin{center}
+        \textbf{00278159\\83-26-28}
+    \end{center}
+\end{frame}
+
+\end{document}
